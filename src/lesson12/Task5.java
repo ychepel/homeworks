@@ -14,18 +14,20 @@ public class Task5 {
                 {6, 3},
                 {9, 3, 5, 4}
         };
-        int maxSubArrayLength = array[0].length;
-        int maxValue = array[0][0];
+        int maxLengthArray = 0;
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i].length >= maxSubArrayLength) {
-                maxSubArrayLength = array[i].length;
-                maxValue = array[i][0];
-                for (int j = 0; j < array[i].length; j++) {
-                    if (array[i][j] > maxValue) {
-                        maxValue = array[i][j];
-                    }
-                }
+            if (array[i].length >= array[maxLengthArray].length) {
+                maxLengthArray = i;
+            }
+        }
+
+        int[] longestSubArray = array[maxLengthArray];
+        int maxValue = longestSubArray[0];
+
+        for (int i = 0; i < longestSubArray.length; i++) {
+            if (maxValue < longestSubArray[i]) {
+                maxValue = longestSubArray[i];
             }
         }
 
