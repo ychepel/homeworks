@@ -5,61 +5,51 @@ package lesson17;
 // (сумма длин любых двух сторон должна быть больше длины третьей стороны).
 
 public class Triangle {
-    private static final int SIDES_QUANTITY = 3;
+    private double side1;
+    private double side2;
+    private double side3;
 
-    private double[] sides;
-
-    public Triangle() {
-        this.sides = new double[SIDES_QUANTITY];
+    public Triangle(double side1, double side2, double side3) {
+        validateSide(side1, side2, side3);
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
     }
 
     public double getSide1() {
-        return sides[0];
+        return side1;
     }
 
     public void setSide1(double length) {
-        validateSide(0, length);
-        this.sides[0] = length;
+        validateSide(length, this.side2, this.side3);
+        this.side1 = length;
     }
 
     public double getSide2() {
-        return sides[1];
+        return side2;
     }
 
     public void setSide2(double length) {
-        validateSide(1, length);
-        this.sides[1] = length;
+        validateSide(this.side1, length, this.side3);
+        this.side2 = length;
     }
 
     public double getSide3() {
-        return sides[2];
+        return side3;
     }
 
     public void setSide3(double length) {
-        validateSide(2, length);
-        this.sides[2] = length;
+        validateSide(this.side1, this.side2, length);
+        this.side3 = length;
     }
 
-    private void validateSide(int index, double length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("side length must be greater than 0");
+    private void validateSide(double side1, double side2, double side3) {
+        if (side1 + side2 > side3
+            && side1 + side3 > side2
+            && side2 + side3 > side1
+            && side1 > 0 && side2 > 0 && side3 > 0) {
+            return;
         }
-
-        double[] checkingValues = new double[SIDES_QUANTITY];
-        for (int i = 0; i < SIDES_QUANTITY; i++) {
-            if (i == index) {
-                checkingValues[i] = length;
-                continue;
-            }
-            if (sides[i] == 0) {
-                return;
-            }
-            checkingValues[i] = sides[i];
-        }
-        if (checkingValues[0] + checkingValues[1] <= checkingValues[2]
-            || checkingValues[0] + checkingValues[2] <= checkingValues[1]
-            || checkingValues[1] + checkingValues[2] <= checkingValues[0]) {
-            throw new IllegalArgumentException("invalid composition of side lengths");
-        }
+        throw new IllegalArgumentException("invalid composition of side lengths");
     }
 }
