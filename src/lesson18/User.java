@@ -24,11 +24,7 @@ public class User {
     }
 
     public String getMessage(String username, String password) {
-        if (check(username, password)) {
-            return this.message;
-        } else {
-            return "permission denied";
-        }
+        return check(username, password) ? this.message : "permission denied";
     }
 
     public String getInfo() {
