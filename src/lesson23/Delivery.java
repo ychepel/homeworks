@@ -9,6 +9,11 @@ public class Delivery {
     private double productPrice;
     private int count;
 
+    public Delivery(double productPrice, int count) {
+        this.productPrice = productPrice;
+        this.count = count;
+    }
+
     public double calculateDeliveryCost() {
         return productPrice * count;
     }
