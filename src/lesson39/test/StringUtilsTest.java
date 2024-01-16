@@ -1,6 +1,6 @@
-package Lesson39.test;
+package lesson39.test;
 
-import Lesson39.StringUtils;
+import lesson39.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
