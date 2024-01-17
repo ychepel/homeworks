@@ -17,6 +17,6 @@ class StringUtilsTest {
         expectedResult.put('c', 5);
         expectedResult.put(' ', 2);
         expectedResult.put('d', 3);
-        assertEquals(expectedResult, StringUtils.charFrequently(str));
+        assertEquals(expectedResult, StringUtils.charFrequency(str));
     }
 }

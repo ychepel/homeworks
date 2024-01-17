@@ -3,12 +3,12 @@ package lesson39;
 import java.util.HashMap;
 
 public class StringUtils {
-    public static HashMap<Character, Integer> charFrequently(String str) {
-        HashMap<Character, Integer> frequently = new HashMap<>();
+    public static HashMap<Character, Integer> charFrequency(String str) {
+        HashMap<Character, Integer> frequency = new HashMap<>();
         for (Character elem : str.toCharArray()) {
-            int elemQuantity = frequently.containsKey(elem) ? frequently.get(elem) : 0;
-            frequently.put(elem, ++elemQuantity);
+            int elemQuantity = frequency.containsKey(elem) ? frequency.get(elem) : 0;
+            frequency.put(elem, ++elemQuantity);
         }
-        return frequently;
+        return frequency;
     }
 }
